@@ -37,9 +37,6 @@ foreach ( $myposts as $post ) : setup_postdata( $post ); ?>
     $tag_color = get_post_meta(get_the_ID(), 'meta-tag-color', true);
     ?>
     <article>
-        <span class="date date-month-day">
-            <?=(get_option('showing_months_in_archive')) ? get_the_date('d') : get_the_date('m/d')?>
-        </span>
         <?php if ( $tag_title && get_option('meta_tag_option') ) : ?>
             <span class="meta-tag-title" style="background-color: #<?=$tag_color?>"><?=$tag_title?></span>
         <?php endif; ?>
@@ -50,6 +47,9 @@ foreach ( $myposts as $post ) : setup_postdata( $post ); ?>
         <?php if ( get_option('showing_comments_count_in_archive') ) : ?>
             <span class="archive-comment-count"><?= comments_number(0 , 1, '%') ?></span>
         <?php endif; ?>
+        <span class="date date-month-day">
+            <?=(get_option('showing_months_in_archive')) ? get_the_date('d') : get_the_date('m/d')?>
+        </span>        
     </article>
 <?php 
 endforeach; 
